@@ -48,7 +48,7 @@ class Account extends ComponentBase
     {
         return [''=>'- none -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
     }
-
+    
     /**
      * Executed when this component is bound to a page or layout.
      */
@@ -66,6 +66,10 @@ class Account extends ComponentBase
         $this->page['user'] = $this->user();
         $this->page['loginAttribute'] = $this->loginAttribute();
         $this->page['loginAttributeLabel'] = $this->loginAttributeLabel();
+    }
+    
+    public function onRender() {
+        $this->page['redirect'] = $this->property('redirect');
     }
 
     /**
